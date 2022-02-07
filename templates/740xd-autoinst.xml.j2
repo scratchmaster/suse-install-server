@@ -73,6 +73,19 @@
         <startmode>auto</startmode>
       </interface>
       <interface>
+        <bootproto>static</bootproto>
+        <bridge>yes</bridge>
+        <bridge_forward_delay>15</bridge_forward_delay>
+        <bridge_ports>{{ node.management.device }}</bridge_ports>
+        <bridge_stp>off</bridge_stp>
+        <ipaddr>{{ node.management.ip }}</ipaddr>
+        <mtu>{{ node.management.mtu }}</mtu>
+        <name>{{ node.management.name }}</name>
+        <prefixlen>{{ node.management.prefixlen }}</prefixlen>
+        <startmode>auto</startmode>
+	<zone>{{ node.management.zone }}</zone>
+      </interface>
+      <interface>
         <aliases/>
         <bootproto>none</bootproto>
         <name>{{ node.bond0.nic1 }}</name>
@@ -108,17 +121,6 @@
         <vlan_id>{{ node.cephclustervlan.vlanid }}</vlan_id>
         <zone>{{ node.cephclustervlan.zone }}</zone>
       </interface>
-      <interface>
-        <aliases/>
-        <bootproto>static</bootproto>
-        <etherdevice>{{ node.provision.device }}</etherdevice>
-        <ipaddr>{{ node.provision.ip }}</ipaddr>
-        <mtu>{{ node.provision.mtu }}</mtu>
-        <name>{{ node.provision.name }}</name>
-        <prefixlen>{{ node.provision.prefixlen }}</prefixlen>
-        <startmode>auto</startmode>
-        <zone>{{ node.provision.zone }}</zone>
-      </interface>
     </interfaces>
     <ipv6 config:type="boolean">true</ipv6>
     <keep_install_network config:type="boolean">true</keep_install_network>
@@ -129,7 +131,7 @@
       <routes config:type="list">
         <route>
           <destination>default</destination>
-          <device>{{ node.provision.device }}</device>
+          <device>{{ node.management.name }}</device>
           <gateway>{{ GATEWAY }}</gateway>
           <netmask>-</netmask>
         </route>
