@@ -142,11 +142,9 @@
         <bonding_slave0>{{ node.bond0.nic1 }}</bonding_slave0>
         <bonding_slave1>{{ node.bond0.nic2 }}</bonding_slave1>
         <bootproto>static</bootproto>
-        <ipaddr>{{ node.bond0.ip }}</ipaddr>
         <mtu>{{ node.bond0.mtu }}</mtu>
         <name>{{ node.bond0.name }}</name>
         <startmode>auto</startmode>
-        <prefixlen>{{ node.bond0.prefixlen }}</prefixlen>
       </interface>
       <interface>
         <aliases/>
@@ -159,6 +157,19 @@
         <bootproto>none</bootproto>
         <name>{{ node.bond0.nic2 }}</name>
         <startmode>auto</startmode>
+      </interface>
+      <interface>
+        <bootproto>static</bootproto>
+        <bridge>yes</bridge>
+        <bridge_forward_delay>15</bridge_forward_delay>
+        <bridge_ports>{{ node.management.device }}</bridge_ports>
+        <bridge_stp>off</bridge_stp>
+        <ipaddr>{{ node.management.ip }}</ipaddr>
+        <mtu>{{ node.management.mtu }}</mtu>
+        <name>{{ node.management.name }}</name>
+        <prefixlen>{{ node.management.prefixlen }}</prefixlen>
+        <startmode>auto</startmode>
+        <zone>{{ node.management.zone }}</zone>
       </interface>
       <interface>
         <aliases/>
@@ -194,7 +205,7 @@
       <routes config:type="list">
         <route>
           <destination>default</destination>
-          <device>{{ node.bond0.name }}</device>
+          <device>{{ node.management.name }}</device>
           <gateway>{{ GATEWAY }}</gateway>
           <netmask>-</netmask>
         </route>
