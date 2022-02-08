@@ -150,16 +150,6 @@
       </interface>
       <interface>
         <aliases/>
-        <bonding_module_opts>{{ node.bond1.args }}</bonding_module_opts>
-        <bonding_slave0>{{ node.bond1.nic1 }}</bonding_slave0>
-        <bonding_slave1>{{ node.bond1.nic2 }}</bonding_slave1>
-        <bootproto>none</bootproto>
-        <mtu>{{ node.bond1.mtu }}</mtu>
-        <name>{{ node.bond1.name }}</name>
-        <startmode>auto</startmode>
-      </interface>
-      <interface>
-        <aliases/>
         <bootproto>none</bootproto>
         <name>{{ node.bond0.nic1 }}</name>
         <startmode>auto</startmode>
@@ -168,18 +158,6 @@
         <aliases/>
         <bootproto>none</bootproto>
         <name>{{ node.bond0.nic2 }}</name>
-        <startmode>auto</startmode>
-      </interface>
-      <interface>
-        <aliases/>
-        <bootproto>none</bootproto>
-        <name>{{ node.bond1.nic1 }}</name>
-        <startmode>auto</startmode>
-      </interface>
-      <interface>
-        <aliases/>
-        <bootproto>none</bootproto>
-        <name>{{ node.bond1.nic2 }}</name>
         <startmode>auto</startmode>
       </interface>
       <interface>
